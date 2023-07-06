@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "username": "Brian",
+      "password": "brianpassword"
+    },
+    {
+      "username": "Rohald",
+      "password": "rohaldpassword"
+    },
+    {
+      "username": "Rachel",
+      "password": "rachelpassword"
+    },
+    {
+      "username": "Laura",
+      "password": "laurapassword"
+    },
+    {
+      "username": "Dustin",
+      "password": "dustinpassword"
+    },
+    {
+      "username": "Travis",
+      "password": "travispassword"
+    }
+  ],
+  "blogPosts": [
+    {
+      "userId": 1,
+      "title": "A Bug's Life: Bugs Beware, Developers Are Here to Squash You!",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 1,
+      "title": "From Novice to Ninja: Strategies for Teaching Students to Code with Proficiency",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 2,
+      "title": "Boss Mode Activated: How I Created a FlexBox Playground",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 2,
+      "title": "Elevate Your UI: Becoming a Tailwind CSS Pro",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 3,
+      "title": "Python Wizardry 101: How to Level Up from 'Sssssimple' to Master",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 3,
+      "title": "Python to the Rescue: Awesome Hacks for a Stress-Free Existence",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 4,
+      "title": "React: From Panic Attacks to 'You've Got This!' Moments",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 4,
+      "title": "How Not to React: Common Mistakes to Avoid in Your Journey of Learning React",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 5,
+      "title": "JavaScript Jigsaw: Piecing Together the Puzzle of Web Development",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 5,
+      "title": "AI Have a Dream: Punny Tales of Learning to Harness Artificial Intelligence",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 5,
+      "title": "Mastering AI: Essential Steps to Unlocking the Potential of Artificial Intelligence",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    },
+    {
+      "userId": 6,
+      "title": "Blog Post Title: A Generic and Boring Guide on How Not to Title Blog Posts",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Amet commodo nulla facilisi nullam. Eget velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nulla at volutpat diam ut venenatis tellus in metus vulputate."
+    }
+  ]
+}

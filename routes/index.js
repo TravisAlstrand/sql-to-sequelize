@@ -35,31 +35,45 @@ router.get(
 // );
 
 router.get(
-  "/brian",
+  "/user/:name",
   asyncHandler(async (req, res) => {
-    try {
-      const results = await sequelize.query(`
-        SELECT BlogPosts.id, title, body, userId, Users.username
-        FROM BlogPosts
-        JOIN Users ON BlogPosts.userId = Users.id
-        Where Users.username = 'Brian'
-      `);
-      res.json(results);
-    } catch (error) {
-      res.status(500).json({ error: `${error}` });
+    const name = req.params.name.toLowerCase();
+    const titledName = titleCase(name);
+    const user = await User.findOne({ where: { username: titledName } });
+    if (user) {
+      try {
+        const results = await sequelize.query(`
+            SELECT BlogPosts.id, title, body, userId, Users.username
+            FROM BlogPosts
+            JOIN Users ON BlogPosts.userId = Users.id
+            Where Users.username = '${user.username}'
+          `);
+        res.json(results);
+      } catch (error) {
+        res.status(500).json({ error: `${error}` });
+      }
+    } else {
+      res.status(404).json({ message: "User not found!" });
     }
   })
 );
 
 // router.get(
-//   "/brian",
+//   "/user/:name",
 //   asyncHandler(async (req, res) => {
-//     try {
-//       const results = await
+//     const name = req.params.name.toLowerCase();
+//     const titledName = titleCase(name);
+//     const user = await User.findOne({ where: { username: titledName } });
+//     if (user) {
+//       try {
+//         const results = await
 
-//       res.json(results);
-//     } catch (error) {
-//       res.status(500).json({ error: `${error}` });
+//         res.json(results);
+//       } catch (error) {
+//         res.status(500).json({ error: `${error}` });
+//       }
+//     } else {
+//       res.status(404).json({ message: "User not found!" });
 //     }
 //   })
 // );
@@ -99,5 +113,12 @@ router.get(
 //     }
 //   })
 // );
+
+const titleCase = (name) => {
+  let firstLetter = name.charAt(0);
+  const remainingLetters = name.substring(1);
+  firstLetter = firstLetter.toUpperCase();
+  return firstLetter + remainingLetters;
+};
 
 module.exports = router;

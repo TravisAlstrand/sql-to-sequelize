@@ -20,25 +20,32 @@ router.get(
 );
 
 router.get(
-  "/brian",
+  "/user/:name",
   asyncHandler(async (req, res) => {
-    try {
-      const results = await BlogPost.findAll({
-        attributes: ["id", "title", "body", "userId"],
-        include: [
-          {
-            model: User,
-            as: "author",
-            attributes: ["username"],
-            where: {
-              username: "Brian",
+    const name = req.params.name.toLowerCase();
+    const titledName = titleCase(name);
+    const user = await User.findOne({ where: { username: titledName } });
+    if (user) {
+      try {
+        const results = await BlogPost.findAll({
+          attributes: ["id", "title", "body", "userId"],
+          include: [
+            {
+              model: User,
+              as: "author",
+              attributes: ["username"],
+              where: {
+                username: user.username,
+              },
             },
-          },
-        ],
-      });
-      res.json(results);
-    } catch (error) {
-      res.status(500).json({ error: `${error}` });
+          ],
+        });
+        res.json(results);
+      } catch (error) {
+        res.status(500).json({ error: `${error}` });
+      }
+    } else {
+      res.status(404).json({ message: "User not found!" });
     }
   })
 );

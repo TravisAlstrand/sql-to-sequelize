@@ -1,45 +1,28 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
+  class BlogPost extends Model {}
 
-  class BlogPost extends Model { }
-
-  BlogPost.init({
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "A blog title is required"
-        },
-        notEmpty: {
-          msg: "Please provide a blog title"
-        }
-      }
+  BlogPost.init(
+    {
+      title: {
+        type: DataTypes.STRING,
+      },
+      body: {
+        type: DataTypes.TEXT,
+      },
     },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: "A blog body is required"
-        },
-        notEmpty: {
-          msg: "Please provide a blog body"
-        }
-      }
-    }
-  }, { sequelize });
+    { sequelize }
+  );
 
   BlogPost.associate = (models) => {
     BlogPost.belongsTo(models.User, {
-      as: 'author',
+      as: "author",
       foreignKey: {
-        fieldName: 'userId',
-      }
+        fieldName: "userId",
+      },
     });
   };
 
   return BlogPost;
-
 };

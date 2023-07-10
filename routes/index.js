@@ -5,8 +5,12 @@ const { asyncHandler } = require("../middleware/asyncHandler");
 const { sequelize } = require("../models/index");
 const { literal } = require("sequelize");
 
+/* ============================================ */
+/* ============ GET ALL BLOG POSTS ============ */
+/* ============================================ */
+
 router.get(
-  "/all-blogs",
+  "/blogposts",
   asyncHandler(async (req, res) => {
     try {
       const results = await sequelize.query(`
@@ -22,7 +26,7 @@ router.get(
 );
 
 // router.get(
-//   "/all-blogs",
+//   "/blogposts",
 //   asyncHandler(async (req, res) => {
 //     try {
 //       const results = await
@@ -33,6 +37,40 @@ router.get(
 //     }
 //   })
 // );
+
+/* ============================================ */
+/* ============ POST NEW BLOG POST ============ */
+/* ============================================ */
+
+router.post(
+  "/blogposts",
+  asyncHandler(async (req, res) => {
+    try {
+      await sequelize.query(
+        `INSERT INTO BlogPosts (title, body, userId) VALUES ('${req.body.title}', '${req.body.body}', ${req.body.userId})`
+      );
+      res.status(201).end();
+    } catch (error) {
+      res.status(500).json({ error: `${error}` });
+    }
+  })
+);
+
+// router.post(
+//   "/blogposts",
+//   asyncHandler(async (req, res) => {
+//     try {
+//       await BlogPost.create(req.body);
+//       res.status(201).end();
+//     } catch (error) {
+//       res.status(500).json({ error: `${error}` });
+//     }
+//   })
+// );
+
+/* ==================================================== */
+/* ============ GET ALL BLOG POSTS BY USER ============ */
+/* ==================================================== */
 
 router.get(
   "/user/:name",
@@ -77,6 +115,10 @@ router.get(
 //     }
 //   })
 // );
+
+/* ==================================================== */
+/* ============ GET ALL BLOG POSTS BY USER ============ */
+/* ================ WITH LEAST ENTRIES ================ */
 
 router.get(
   "/slacker",

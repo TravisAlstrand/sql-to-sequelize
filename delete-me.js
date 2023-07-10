@@ -19,6 +19,18 @@ router.get(
   })
 );
 
+router.post(
+  "/blogposts",
+  asyncHandler(async (req, res) => {
+    try {
+      await BlogPost.create(req.body);
+      res.status(201).end();
+    } catch (error) {
+      res.status(500).json({ error: `${error}` });
+    }
+  })
+);
+
 router.get(
   "/user/:name",
   asyncHandler(async (req, res) => {

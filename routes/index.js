@@ -3,7 +3,6 @@ const router = express.Router();
 const { User, BlogPost } = require("../models");
 const { asyncHandler } = require("../middleware/asyncHandler");
 const { sequelize } = require("../models/index");
-const { literal } = require("sequelize");
 
 /* ============================================ */
 /* ============ GET ALL BLOG POSTS ============ */

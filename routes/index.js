@@ -46,9 +46,10 @@ router.post(
   "/blogposts",
   asyncHandler(async (req, res) => {
     try {
-      await sequelize.query(
-        `INSERT INTO BlogPosts (title, body, userId) VALUES ('${req.body.title}', '${req.body.body}', ${req.body.userId})`
-      );
+      await sequelize.query(`
+        INSERT INTO BlogPosts (title, body, userId) 
+        VALUES ('${req.body.title}', '${req.body.body}', ${req.body.userId});
+      `);
       res.status(201).end();
     } catch (error) {
       res.status(500).json({ error: `${error}` });
@@ -67,6 +68,62 @@ router.post(
 //     }
 //   })
 // );
+
+/* ============================================ */
+/* ============= EDIT A BLOG POST ============= */
+/* ============================================ */
+
+router.put(
+  "/blogposts/:id",
+  asyncHandler(async (req, res) => {
+    try {
+      const blog = await sequelize.query(`
+        SELECT * FROM BlogPosts where id = ${req.params.id}
+      `);
+
+      if (blog) {
+        await sequelize.query(
+          `UPDATE BlogPosts SET title = '${req.body.title}' WHERE id = ${req.params.id}`
+        );
+        res.status(204).end();
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find blog post with that id" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: `${error}` });
+    }
+  })
+);
+
+/* ============================================ */
+/* ============ DELETE A BLOG POST ============ */
+/* ============================================ */
+
+router.delete(
+  "/blogposts/:id",
+  asyncHandler(async (req, res) => {
+    try {
+      const blog = await sequelize.query(`
+        SELECT * FROM BlogPosts where id = ${req.params.id}
+      `);
+
+      if (blog) {
+        await sequelize.query(`
+          DELETE FROM BlogPosts WHERE id = ${req.params.id}
+        `);
+        res.status(204).end();
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find blog post with that id" });
+      }
+    } catch (error) {
+      res.status(500).json({ error: `${error}` });
+    }
+  })
+);
 
 /* ==================================================== */
 /* ============ GET ALL BLOG POSTS BY USER ============ */

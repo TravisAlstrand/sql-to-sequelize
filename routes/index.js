@@ -13,9 +13,9 @@ router.get(
   asyncHandler(async (req, res) => {
     try {
       const results = await sequelize.query(`
-        SELECT BlogPosts.id, title, body, userId, Users.username
+        SELECT BlogPosts.id, title, body, userId, author.username
         FROM BlogPosts
-        JOIN Users ON BlogPosts.userId = Users.id
+        JOIN Users As 'author' ON BlogPosts.userId = author.id
       `);
       res.json(results);
     } catch (error) {
@@ -29,7 +29,6 @@ router.get(
 //   asyncHandler(async (req, res) => {
 //     try {
 //       const results = await
-
 //       res.json(results);
 //     } catch (error) {
 //       res.status(500).json({ error: `${error}` });
@@ -46,7 +45,7 @@ router.post(
   asyncHandler(async (req, res) => {
     try {
       await sequelize.query(`
-        INSERT INTO BlogPosts (title, body, userId) 
+        INSERT INTO BlogPosts (title, body, userId)
         VALUES ('${req.body.title}', '${req.body.body}', ${req.body.userId});
       `);
       res.status(201).end();
@@ -60,7 +59,7 @@ router.post(
 //   "/blogposts",
 //   asyncHandler(async (req, res) => {
 //     try {
-//       await BlogPost.create(req.body);
+//       await
 //       res.status(201).end();
 //     } catch (error) {
 //       res.status(500).json({ error: `${error}` });
@@ -133,7 +132,9 @@ router.get(
   asyncHandler(async (req, res) => {
     const name = req.params.name.toLowerCase();
     const titledName = titleCase(name);
-    const user = await User.findOne({ where: { username: titledName } });
+    const user = await sequelize.query(
+      `SELECT * FROM users WHERE username = 'titledName' LIMIT 1`
+    );
     if (user) {
       try {
         const results = await sequelize.query(`
